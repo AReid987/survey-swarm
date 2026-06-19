@@ -1,26 +1,10 @@
 [
   {
-    "id": "cmd-hive-mind-1761295798372",
+    "id": "cmd-hive-mind-1761678960682",
     "type": "hive-mind",
     "success": true,
-    "duration": 32.28762500000005,
-    "timestamp": 1761295798404,
-    "metadata": {}
-  },
-  {
-    "id": "cmd-hive-mind-1761295806375",
-    "type": "hive-mind",
-    "success": true,
-    "duration": 17498.646209,
-    "timestamp": 1761295823873,
-    "metadata": {}
-  },
-  {
-    "id": "cmd-hive-mind-1761295833519",
-    "type": "hive-mind",
-    "success": true,
-    "duration": 105143.24766699999,
-    "timestamp": 1761295938662,
+    "duration": 48.594832999999994,
+    "timestamp": 1761678960731,
     "metadata": {}
   }
 ]

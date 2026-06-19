@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Swarm - Design System Demo</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="src/styles/design-system.css">
+    <link rel="stylesheet" href="src/styles/dashboard.css">
+    <link rel="stylesheet" href="src/styles/streaming.css">
+    <link rel="stylesheet" href="src/styles/implementation-guide.css">
+    <link rel="stylesheet" href="src/styles/advanced-architecture.css">
+
+    <style>
+        /* Demo-specific styles */
+        body {
+            font-family: var(--font-family-secondary);
+        }
+
+        .demo-section {
+            margin-bottom: var(--space-12);
+        }
+
+        .demo-title {
+            font-family: var(--font-family-display);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-neon-primary);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wide);
+            margin-bottom: var(--space-6);
+            border-bottom: 1px solid var(--color-border-subtle);
+            padding-bottom: var(--space-3);
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .code-block {
+            background: var(--color-background-tertiary);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            font-family: var(--font-family-code);
+            font-size: var(--font-size-sm);
+            color: var(--color-neon-primary);
+            overflow-x: auto;
+            margin: var(--space-4) 0;
+        }
+
+        /* Interactive demo styles */
+        .interactive-demo {
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            background: var(--color-background-glass);
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .demo-result {
+            padding: var(--space-4);
+            background: var(--color-background-secondary);
+            border-radius: var(--radius-md);
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animated background for demo */
+        .demo-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-background"></div>
+
+    <!-- Main Container -->
+    <div class="grid-container" style="padding: var(--space-8);">
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="typography-h1 text-neon-primary mb-4">SURVEY SWARM</h1>
+            <p class="typography-h3 text-secondary">Design System Demo - Printernet-Dash Aesthetic</p>
+            <div class="flex justify-center gap-4 mt-6">
+                <span class="status-indicator status-indicator--active">System Active</span>
+                <span class="badge">v1.0.0</span>
+                <span class="typography-code">CSS Custom Properties</span>
+            </div>
+        </header>
+
+        <!-- Color System Demo -->
+        <section class="demo-section">
+            <h2 class="demo-title">Color System</h2>
+
+            <div class="demo-grid">
+                <!-- Base Colors -->
+                <div class="card">
+                    <h3 class="card-title">Base Colors</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded" style="background: var(--color-background-primary); border: 1px solid var(--color-border-subtle);"></div>
+                            <div>
+                                <div class="typography-code">--color-background-primary</div>
+                                <div class="typography-caption">#0a0a0f</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded" style="background: var(--color-background-secondary);"></div>
+                            <div>
+                                <div class="typography-code">--color-background-secondary</div>
+                                <div class="typography-caption">#13131a</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded" style="background: var(--color-text-primary);"></div>
+                            <div>
+                                <div class="typography-code">--color-text-primary</div>
+                                <div class="typography-caption">#e4e4e7</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neon Colors -->
+                <div class="card">
+                    <h3 class="card-title">Neon Accents</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded neon-glow" style="background: var(--color-neon-primary);"></div>
+                            <div>
+                                <div class="typography-code neon-text">--color-neon-primary</div>
+                                <div class="typography-caption">#00ffff</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded" style="background: var(--color-neon-secondary); box-shadow: 0 0 20px var(--color-neon-secondary-glow);"></div>
+                            <div>
+                                <div class="typography-code" style="color: var(--color-neon-secondary);">--color-neon-secondary</div>
+                                <div class="typography-caption">#ff00ff</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded" style="background: var(--color-neon-success); box-shadow: 0 0 20px var(--color-neon-success-glow);"></div>
+                            <div>
+                                <div class="typography-code" style="color: var(--color-neon-success);">--color-neon-success</div>
+                                <div class="typography-caption">#00ff88</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Colors -->
+                <div class="card">
+                    <h3 class="card-title">Status Colors</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded" style="background: var(--color-status-active);"></div>
+                            <div>
+                                <div class="typography-code" style="color: var(--color-status-active);">--color-status-active</div>
+                                <div class="typography-caption">Active State</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded" style="background: var(--color-status-warning);"></div>
+                            <div>
+                                <div class="typography-code" style="color: var(--color-status-warning);">--color-status-warning</div>
+                                <div class="typography-caption">Warning State</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded" style="background: var(--color-status-error);"></div>
+                            <div>
+                                <div class="typography-code" style="color: var(--color-status-error);">--color-status-error</div>
+                                <div class="typography-caption">Error State</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Demo -->
+        <section class="demo-section">
+            <h2 class="demo-title">Typography System</h2>
+
+            <div class="card mb-6">
+                <h3 class="card-title">Font Hierarchy</h3>
+                <div class="space-y-4">
+                    <h1 class="typography-h1">Heading 1 - Main Title</h1>
+                    <h2 class="typography-h2">Heading 2 - Section Title</h2>
+                    <h3 class="typography-h3">Heading 3 - Subsection</h3>
+                    <p class="typography-body">Body text - Regular paragraph content for the main interface. This uses the secondary font family for optimal readability.</p>
+                    <p class="typography-caption">Caption text - Small labels and metadata information</p>
+                    <code class="typography-code">Code text - Technical information and data</code>
+                    <p class="typography-data">Data text - Metrics and numeric values</p>
+                </div>
+            </div>
+
+            <div class="demo-grid">
+                <div class="card">
+                    <h3 class="card-title">Font Families</h3>
+                    <div class="space-y-3">
+                        <p style="font-family: var(--font-family-display);">Display Font - Space Grotesk</p>
+                        <p style="font-family: var(--font-family-secondary);">Secondary Font - Inter</p>
+                        <p style="font-family: var(--font-family-primary);">Primary Font - JetBrains Mono</p>
+                        <p style="font-family: var(--font-family-code);">Code Font - Fira Code</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Font Weights</h3>
+                    <div class="space-y-2">
+                        <p style="font-weight: var(--font-weight-light);">Light - 300</p>
+                        <p style="font-weight: var(--font-weight-normal);">Normal - 400</p>
+                        <p style="font-weight: var(--font-weight-medium);">Medium - 500</p>
+                        <p style="font-weight: var(--font-weight-semibold);">Semibold - 600</p>
+                        <p style="font-weight: var(--font-weight-bold);">Bold - 700</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components Demo -->
+        <section class="demo-section">
+            <h2 class="demo-title">Component Library</h2>
+
+            <!-- Buttons -->
+            <div class="card mb-6">
+                <h3 class="card-title">Buttons</h3>
+                <div class="flex gap-3 flex-wrap">
+                    <button class="button button--primary">Primary Action</button>
+                    <button class="button button--secondary">Secondary Action</button>
+                    <button class="button button--ghost">Ghost Button</button>
+                    <button class="button button--sm">Small Button</button>
+                    <button class="button button--lg">Large Button</button>
+                </div>
+            </div>
+
+            <!-- Status Indicators -->
+            <div class="card mb-6">
+                <h3 class="card-title">Status Indicators</h3>
+                <div class="flex gap-3 flex-wrap">
+                    <span class="status-indicator status-indicator--active">Active</span>
+                    <span class="status-indicator status-indicator--idle">Idle</span>
+                    <span class="status-indicator status-indicator--busy">Busy</span>
+                    <span class="status-indicator status-indicator--error">Error</span>
+                </div>
+            </div>
+
+            <!-- Agent Cards -->
+            <div class="mb-6">
+                <h3 class="card-title mb-4">Agent Status Cards</h3>
+                <div class="agent-status-grid">
+                    <div class="agent-card agent-card--browser-controller">
+                        <div class="agent-header">
+                            <h4 class="agent-name">Browser Controller</h4>
+                            <span class="status-indicator status-indicator--active">Active</span>
+                        </div>
+                        <div class="agent-metrics">
+                            <div class="agent-metric">
+                                <div class="agent-metric-value">5</div>
+                                <div class="agent-metric-label">Sessions</div>
+                            </div>
+                            <div class="agent-metric">
+                                <div class="agent-metric-value">98%</div>
+                                <div class="agent-metric-label">Success Rate</div>
+                            </div>
+                            <div class="agent-metric">
+                                <div class="agent-metric-value">2.3s</div>
+                                <div class="agent-metric-label">Avg Response</div>
+                            </div>
+                            <div class="agent-metric">
+                                <div class="agent-metric-value">42</div>
+                                <div class="agent-metric-label">Completed</div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="progress-bar progress-bar--fill-75"></div>
+                            <button class="button button--ghost button--sm">Configure</button>
+                        </div>
+                    </div>
+
+                    <div class="agent-card agent-card--question-analyzer">
+                        <div class="agent-header">
+                            <h4 class="agent-name">Question Analyzer</h4>
+                            <span class="status-indicator status-indicator--busy">Busy</span>
+                        </div>
+                        <div class="agent-metrics">
+                            <div class="agent-metric">
+                                <div class="agent-metric-value">12</div>
+                                <div class="agent-metric-label">Queued</div>
+                            </div>
+                            <div class="agent-metric">
+                                <div class="agent-metric-value">95%</div>
+                                <div class="agent-metric-label">Accuracy</div>
+                            </div>
+                            <div class="agent-metric">
+                                <div class="agent-metric-value">0.8s</div>
+                                <div class="agent-metric-label">Process Time</div>
+                            </div>
+                            <div class="agent-metric">
+                                <div class="agent-metric-value">156</div>
+                                <div class="agent-metric-label">Analyzed</div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="progress-bar progress-bar--fill-60"></div>
+                            <button class="button button--ghost button--sm">View Log</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metric Cards -->
+            <div class="mb-6">
+                <h3 class="card-title mb-4">Performance Metrics</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">247</div>
+                        <div class="metric-label">Total Surveys</div>
+                        <div class="metric-change metric-change--positive">+12.5%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">89%</div>
+                        <div class="metric-label">Completion Rate</div>
+                        <div class="metric-change metric-change--positive">+3.2%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">$8.47</div>
+                        <div class="metric-label">Avg Earnings/hr</div>
+                        <div class="metric-change metric-change--negative">-2.1%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">1.2s</div>
+                        <div class="metric-label">Response Time</div>
+                        <div class="metric-change metric-change--positive">+15.3%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Effects Demo -->
+        <section class="demo-section">
+            <h2 class="demo-title">Visual Effects</h2>
+
+            <div class="demo-grid">
+                <!-- Glass Morphism -->
+                <div class="interactive-demo">
+                    <h3 class="card-title">Glass Morphism</h3>
+                    <div class="demo-controls">
+                        <button class="button button--primary" onclick="toggleGlass()">Toggle Effect</button>
+                    </div>
+                    <div id="glass-demo" class="glass p-6 text-center">
+                        <p class="typography-body">Glass morphism effect with backdrop blur</p>
+                        <p class="typography-caption mt-2">Toggle to see the difference</p>
+                    </div>
+                </div>
+
+                <!-- Neon Glow -->
+                <div class="interactive-demo">
+                    <h3 class="card-title">Neon Glow Effects</h3>
+                    <div class="demo-controls">
+                        <button class="button button--secondary" onclick="toggleNeon()">Toggle Glow</button>
+                    </div>
+                    <div id="neon-demo" class="card text-center">
+                        <p class="typography-data">Neon glow effect</p>
+                        <p class="typography-caption mt-2">Click to enable/disable glow</p>
+                    </div>
+                </div>
+
+                <!-- Animated Background -->
+                <div class="interactive-demo">
+                    <h3 class="card-title">Animated Elements</h3>
+                    <div class="demo-controls">
+                        <button class="button button--ghost" onclick="toggleAnimation()">Toggle Animation</button>
+                    </div>
+                    <div id="animation-demo" class="card text-center">
+                        <div class="particle-field" style="height: 100px; position: relative; border-radius: var(--radius-md); overflow: hidden;">
+                            <p class="typography-body" style="position: relative; z-index: 1;">Particle field animation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Streaming Interface Demo -->
+        <section class="demo-section">
+            <h2 class="demo-title">Streaming Interface</h2>
+
+            <div class="stream-viewer mb-6">
+                <div class="stream-canvas stream-canvas--loading">
+                    <div class="loading-spinner"></div>
+                </div>
+                <div class="stream-controls">
+                    <button class="stream-control-button stream-control-button--primary">▶</button>
+                    <button class="stream-control-button">⏸</button>
+                    <button class="stream-control-button">⏹</button>
+                    <div class="stream-info">
+                        <div class="stream-info-title">Browser Session #001</div>
+                        <div class="stream-info-details">
+                            <span class="stream-info-detail">1080p</span>
+                            <span class="stream-info-detail">30fps</span>
+                            <span class="stream-info-detail">250ms latency</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stream-grid">
+                <div class="stream-grid-item">
+                    <div class="stream-viewer" style="min-height: 200px;">
+                        <div class="stream-canvas" style="background: var(--color-background-tertiary); display: flex; align-items: center; justify-content: center;">
+                            <p class="typography-caption">Agent View #1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stream-grid-item">
+                    <div class="stream-viewer" style="min-height: 200px;">
+                        <div class="stream-canvas" style="background: var(--color-background-tertiary); display: flex; align-items: center; justify-content: center;">
+                            <p class="typography-caption">Agent View #2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stream-grid-item">
+                    <div class="stream-viewer" style="min-height: 200px;">
+                        <div class="stream-canvas" style="background: var(--color-background-tertiary); display: flex; align-items: center; justify-content: center;">
+                            <p class="typography-caption">Agent View #3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Architecture Demo -->
+        <section class="demo-section">
+            <h2 class="demo-title">Advanced Architecture Features</h2>
+
+            <!-- Advanced Grid Layouts -->
+            <div class="mb-6">
+                <h3 class="card-title mb-4">Advanced Grid Layouts</h3>
+                <div class="demo-grid">
+                    <!-- Holy Grail Layout -->
+                    <div class="interactive-demo">
+                        <h4 class="typography-h4 text-neon-primary mb-3">Holy Grail Layout</h4>
+                        <div class="grid-holy-grail" style="min-height: 300px; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); overflow: hidden;">
+                            <header class="header p-4" style="background: var(--color-background-tertiary);">
+                                <span class="typography-caption">Header</span>
+                            </header>
+                            <nav class="nav p-4" style="background: var(--color-background-glass);">
+                                <span class="typography-caption">Navigation</span>
+                            </nav>
+                            <main class="main p-4" style="background: var(--color-background-secondary);">
+                                <span class="typography-caption">Main Content</span>
+                            </main>
+                            <aside class="aside p-4" style="background: var(--color-background-glass);">
+                                <span class="typography-caption">Sidebar</span>
+                            </aside>
+                            <footer class="footer p-4" style="background: var(--color-background-tertiary);">
+                                <span class="typography-caption">Footer</span>
+                            </footer>
+                        </div>
+                    </div>
+
+                    <!-- Glass Morphism Variants -->
+                    <div class="interactive-demo">
+                        <h4 class="typography-h4 text-neon-secondary mb-3">Glass Morphism Variants</h4>
+                        <div class="space-y-3">
+                            <div class="glass-light p-3 rounded">
+                                <span class="typography-caption">Glass Light (20% opacity)</span>
+                            </div>
+                            <div class="glass-medium p-3 rounded">
+                                <span class="typography-caption">Glass Medium (40% opacity)</span>
+                            </div>
+                            <div class="glass-heavy p-3 rounded">
+                                <span class="typography-caption">Glass Heavy (60% opacity)</span>
+                            </div>
+                            <div class="glass-frosted p-3 rounded">
+                                <span class="typography-caption">Glass Frosted (Saturated blur)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Neon Effects -->
+            <div class="mb-6">
+                <h3 class="card-title mb-4">Advanced Neon Effects</h3>
+                <div class="demo-grid">
+                    <!-- Multi-layer Glow -->
+                    <div class="interactive-demo">
+                        <h4 class="typography-h4 text-neon-primary mb-3">Multi-layer Neon Glow</h4>
+                        <div class="space-y-3">
+                            <div class="neon-glow-primary p-4 rounded text-center">
+                                <span class="typography-data">Primary Glow</span>
+                            </div>
+                            <div class="neon-glow-secondary p-4 rounded text-center">
+                                <span class="typography-data" style="color: var(--color-neon-secondary);">Secondary Glow</span>
+                            </div>
+                            <div class="neon-glow-success p-4 rounded text-center">
+                                <span class="typography-data" style="color: var(--color-neon-success);">Success Glow</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Animated Neon -->
+                    <div class="interactive-demo">
+                        <h4 class="typography-h4 text-neon-info mb-3">Animated Neon Effects</h4>
+                        <div class="space-y-3">
+                            <div class="neon-border-animated p-4 rounded text-center">
+                                <span class="typography-data">Animated Border</span>
+                            </div>
+                            <div class="neon-text-pulse p-4 rounded text-center">
+                                <span class="typography-data">Pulsing Text</span>
+                            </div>
+                            <div class="glitch p-4 rounded text-center" data-text="GLITCH">
+                                <span class="typography-data">GLITCH EFFECT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Elements -->
+            <div class="mb-6">
+                <h3 class="card-title mb-4">Interactive Elements</h3>
+                <div class="demo-grid">
+                    <!-- Hover Reveal -->
+                    <div class="hover-reveal card" style="height: 200px;">
+                        <div class="flex items-center justify-center h-full">
+                            <span class="typography-data">Hover to Reveal</span>
+                        </div>
+                        <div class="hover-reveal-content">
+                            <h4 class="typography-h4 text-neon-primary mb-2">Hidden Content</h4>
+                            <p class="typography-body">This content is revealed on hover with a smooth animation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Magnetic Button -->
+                    <div class="card p-6">
+                        <h4 class="typography-h4 text-neon-secondary mb-4">Magnetic Button</h4>
+                        <button class="magnetic-button button button--primary w-full">
+                            Magnetic Effect
+                        </button>
+                    </div>
+
+                    <!-- Ripple Effect -->
+                    <div class="card p-6">
+                        <h4 class="typography-h4 text-neon-success mb-4">Ripple Effect</h4>
+                        <button class="ripple button button--secondary w-full">
+                            Ripple Click
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Typography -->
+            <div class="mb-6">
+                <h3 class="card-title mb-4">Advanced Typography</h3>
+                <div class="card">
+                    <div class="space-y-4">
+                        <h2 class="text-gradient">Gradient Text Effect</h2>
+                        <h3 class="text-gradient-animated">Animated Gradient Text</h3>
+                        <p class="typewriter">This is a typewriter effect animation...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading States -->
+            <div class="mb-6">
+                <h3 class="card-title mb-4">Loading States</h3>
+                <div class="demo-grid">
+                    <div class="card p-6 text-center">
+                        <div class="loading-skeleton h-4 rounded mb-2"></div>
+                        <div class="loading-skeleton h-4 rounded w-3/4 mx-auto mb-2"></div>
+                        <div class="loading-skeleton h-4 rounded w-1/2 mx-auto"></div>
+                    </div>
+
+                    <div class="card p-6 text-center">
+                        <div class="loading-spinner mx-auto mb-3"></div>
+                        <span class="typography-caption">Loading...</span>
+                    </div>
+
+                    <div class="card p-6 text-center">
+                        <div class="stream-buffering">
+                            <div class="stream-buffering-dot"></div>
+                            <div class="stream-buffering-dot"></div>
+                            <div class="stream-buffering-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Layout Demo -->
+        <section class="demo-section">
+            <h2 class="demo-title">Dashboard Layout</h2>
+
+            <div class="dashboard-grid">
+                <div class="col-span-8">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Performance Metrics</h3>
+                            <div class="chart-actions">
+                                <button class="button button--ghost button--sm">1H</button>
+                                <button class="button button--ghost button--sm">24H</button>
+                                <button class="button button--primary button--sm">7D</button>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <div class="chart-grid"></div>
+                            <canvas id="performance-chart" style="width: 100%; height: 100%;"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-4">
+                    <div class="activity-feed">
+                        <div class="activity-feed-header">
+                            <h3 class="activity-feed-title">Activity Feed</h3>
+                        </div>
+                        <div class="activity-feed-content">
+                            <div class="activity-item">
+                                <div class="activity-item-content">
+                                    <div class="activity-item-text">Browser Controller completed survey #1234</div>
+                                    <div class="activity-item-time">2 minutes ago</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-item-content">
+                                    <div class="activity-item-text">Question Analyzer processed 15 questions</div>
+                                    <div class="activity-item-time">5 minutes ago</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-item-content">
+                                    <div class="activity-item-text">Profile Manager updated demographic data</div>
+                                    <div class="activity-item-time">8 minutes ago</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-item-content">
+                                    <div class="activity-item-text">Consensus Validator reached agreement</div>
+                                    <div class="activity-item-time">12 minutes ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section class="demo-section">
+            <h2 class="demo-title">Interactive Demo</h2>
+
+            <div class="interactive-demo">
+                <h3 class="card-title">Theme Customization</h3>
+                <div class="demo-controls">
+                    <button class="button button--primary" onclick="setTheme('default')">Default Theme</button>
+                    <button class="button button--secondary" onclick="setTheme('high-contrast')">High Contrast</button>
+                    <button class="button button--ghost" onclick="setTheme('reduced-motion')">Reduced Motion</button>
+                    <button class="button button--ghost" onclick="setTheme('performance')">Performance Mode</button>
+                </div>
+                <div class="demo-result">
+                    <div id="theme-result">
+                        <p class="typography-body">Select a theme to see the changes applied in real-time</p>
+                        <p class="typography-caption mt-2">All themes use CSS custom properties for easy switching</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-demo mt-6">
+                <h3 class="card-title">Component States</h3>
+                <div class="demo-controls">
+                    <button class="button button--primary" onclick="toggleComponentState('loading')">Loading</button>
+                    <button class="button button--secondary" onclick="toggleComponentState('success')">Success</button>
+                    <button class="button button--ghost" onclick="toggleComponentState('error')">Error</button>
+                    <button class="button button--ghost" onclick="toggleComponentState('warning')">Warning</button>
+                </div>
+                <div class="demo-result">
+                    <div id="state-result">
+                        <span class="status-indicator status-indicator--idle">Ready</span>
+                        <p class="typography-body mt-3">Click buttons to change component states</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="layout-footer mt-12">
+        <div class="footer-info">
+            <div class="footer-item">
+                <span class="footer-item-label">System Status:</span>
+                <span class="footer-item-value">Operational</span>
+            </div>
+            <div class="footer-item">
+                <span class="footer-item-label">Active Agents:</span>
+                <span class="footer-item-value">5</span>
+            </div>
+            <div class="footer-item">
+                <span class="footer-item-label">Uptime:</span>
+                <span class="footer-item-value">99.9%</span>
+            </div>
+        </div>
+        <div class="footer-item">
+            <span class="footer-item-label">Survey Swarm Design System v1.0.0</span>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactive Demos -->
+    <script>
+        // Toggle glass effect
+        function toggleGlass() {
+            const element = document.getElementById('glass-demo');
+            element.classList.toggle('glass');
+        }
+
+        // Toggle neon glow
+        function toggleNeon() {
+            const element = document.getElementById('neon-demo');
+            element.classList.toggle('neon-glow');
+        }
+
+        // Toggle animation
+        function toggleAnimation() {
+            const element = document.querySelector('#animation-demo .particle-field');
+            element.style.display = element.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Set theme
+        function setTheme(theme) {
+            const body = document.body;
+            const result = document.getElementById('theme-result');
+
+            // Remove all theme classes
+            body.classList.remove('theme-high-contrast', 'theme-reduced-motion', 'theme-performance');
+
+            // Add new theme class
+            if (theme !== 'default') {
+                body.classList.add(`theme-${theme}`);
+            }
+
+            // Update result text
+            const themeNames = {
+                'default': 'Default Theme - Full animations and effects',
+                'high-contrast': 'High Contrast Theme - Enhanced visibility',
+                'reduced-motion': 'Reduced Motion Theme - Minimal animations',
+                'performance': 'Performance Mode - Optimized for speed'
+            };
+
+            result.innerHTML = `
+                <p class="typography-body neon-text">${themeNames[theme]}</p>
+                <p class="typography-caption mt-2">Theme changed successfully</p>
+            `;
+        }
+
+        // Toggle component state
+        function toggleComponentState(state) {
+            const result = document.getElementById('state-result');
+            const states = {
+                'loading': {
+                    class: 'status-indicator--busy',
+                    text: 'Loading',
+                    message: 'Processing your request...'
+                },
+                'success': {
+                    class: 'status-indicator--active',
+                    text: 'Success',
+                    message: 'Operation completed successfully!'
+                },
+                'error': {
+                    class: 'status-indicator--error',
+                    text: 'Error',
+                    message: 'An error occurred. Please try again.'
+                },
+                'warning': {
+                    class: 'status-indicator--busy',
+                    text: 'Warning',
+                    message: 'Please review before proceeding.'
+                }
+            };
+
+            const config = states[state];
+            result.innerHTML = `
+                <span class="status-indicator ${config.class}">${config.text}</span>
+                <p class="typography-body mt-3">${config.message}</p>
+            `;
+        }
+
+        // Add some interactive behavior to the demo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers to all cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Simulate real-time updates for metrics
+            setInterval(() => {
+                const metricValues = document.querySelectorAll('.metric-value');
+                metricValues.forEach(metric => {
+                    if (Math.random() > 0.7) {
+                        const currentValue = metric.textContent;
+                        const isPercentage = currentValue.includes('%');
+                        const isTime = currentValue.includes('s');
+                        const isCurrency = currentValue.includes('$');
+
+                        if (isPercentage) {
+                            const value = parseFloat(currentValue);
+                            const newValue = Math.max(0, Math.min(100, value + (Math.random() - 0.5) * 5));
+                            metric.textContent = newValue.toFixed(0) + '%';
+                        } else if (isTime) {
+                            const value = parseFloat(currentValue);
+                            const newValue = Math.max(0.1, value + (Math.random() - 0.5) * 0.2);
+                            metric.textContent = newValue.toFixed(1) + 's';
+                        } else if (isCurrency) {
+                            const value = parseFloat(currentValue.replace('$', ''));
+                            const newValue = Math.max(0, value + (Math.random() - 0.5) * 0.5);
+                            metric.textContent = '$' + newValue.toFixed(2);
+                        } else {
+                            const value = parseInt(currentValue);
+                            const newValue = Math.max(0, value + Math.floor((Math.random() - 0.5) * 10));
+                            metric.textContent = newValue.toString();
+                        }
+
+                        // Flash effect
+                        metric.style.color = 'var(--color-neon-primary)';
+                        metric.style.textShadow = '0 0 10px var(--color-neon-primary-glow)';
+                        setTimeout(() => {
+                            metric.style.color = '';
+                            metric.style.textShadow = '';
+                        }, 500);
+                    }
+                });
+            }, 3000);
+
+            // Add parallax effect to animated background
+            document.addEventListener('mousemove', (e) => {
+                const background = document.querySelector('.demo-background');
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
+                background.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
