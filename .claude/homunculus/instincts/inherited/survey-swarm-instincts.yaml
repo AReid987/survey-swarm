@@ -1,0 +1,319 @@
+# Instincts generated from https://github.com/AReid987/survey-swarm
+# Generated: 2026-07-08T08:01:23.906Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: survey-swarm-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/AReid987/survey-swarm
+---
+
+# Survey Swarm Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: build
+
+## Evidence
+
+- 1 commits analyzed
+- Detected conventional commit pattern
+- Examples: build(deps): bump the npm_and_yarn group across 2 directories with 18 updates
+
+---
+id: survey-swarm-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/AReid987/survey-swarm
+---
+
+# Survey Swarm Commit Length
+
+## Action
+
+Write moderate-length commit messages (~77 characters)
+
+## Evidence
+
+- Average commit message length: 77 chars
+- Based on 1 commits
+
+---
+id: survey-swarm-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/AReid987/survey-swarm
+---
+
+# Survey Swarm Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: survey-swarm-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/AReid987/survey-swarm
+---
+
+# Survey Swarm Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: survey-swarm-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/AReid987/survey-swarm
+---
+
+# Survey Swarm Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: survey-swarm-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/AReid987/survey-swarm
+---
+
+# Survey Swarm Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: survey-swarm-instinct-file-naming
+trigger: "When creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct File Naming
+
+## Action
+
+Name the file using camelCase
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.files
+
+---
+id: survey-swarm-instinct-function-naming
+trigger: "When defining a new function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct Function Naming
+
+## Action
+
+Name the function using camelCase
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.functions
+
+---
+id: survey-swarm-instinct-class-naming
+trigger: "When defining a new class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct Class Naming
+
+## Action
+
+Name the class using PascalCase
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.classes
+
+---
+id: survey-swarm-instinct-constant-naming
+trigger: "When declaring a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct Constant Naming
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.constants
+
+---
+id: survey-swarm-instinct-import-style
+trigger: "When importing modules"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct Import Style
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in codeStyle.importStyle
+
+---
+id: survey-swarm-instinct-export-style
+trigger: "When exporting modules or functions"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct Export Style
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in codeStyle.exportStyle
+
+---
+id: survey-swarm-instinct-commit-format
+trigger: "When making a git commit"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct Commit Format
+
+## Action
+
+Format the commit message using the Conventional Commits standard with a prefix (e.g., build:)
+
+## Evidence
+
+- Pattern in commits.type
+- Example: build(deps): bump the npm_and_yarn group...
+
+---
+id: survey-swarm-instinct-commit-prefix
+trigger: "When committing dependency updates"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct Commit Prefix
+
+## Action
+
+Use the 'build(deps):' prefix in the commit message
+
+## Evidence
+
+- Pattern in commits.prefixes
+- Example: build(deps): bump the npm_and_yarn group...
+
+---
+id: survey-swarm-instinct-test-location
+trigger: "When adding new tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct Test Location
+
+## Action
+
+Place test files in a separate directory from source code
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation
+
+---
+id: survey-swarm-instinct-typescript
+trigger: "When writing new code"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: AReid987/survey-swarm
+---
+
+# Survey Swarm Instinct Typescript
+
+## Action
+
+Use TypeScript as the programming language
+
+## Evidence
+
+- Pattern in codeStyle.language
+
